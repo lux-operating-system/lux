@@ -1,0 +1,6 @@
+[submodule "lxfs"]
+	path = lxfs
+	url = https://github.com/lux-operating-system/lxfs
+[submodule "boot-x86_64"]
+	path = boot-x86_64
+	url = https://github.com/lux-operating-system/boot-x86_64
