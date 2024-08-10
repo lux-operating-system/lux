@@ -1,3 +1,5 @@
+toolchain:
+	@./toolchain-x86_64/build-toolchain.sh
 
 all:
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lxfs"
