@@ -4,3 +4,7 @@
 [submodule "boot-x86_64"]
 	path = boot-x86_64
 	url = https://github.com/lux-operating-system/boot-x86_64
+[submodule "toolchain-x86_64"]
+	path = toolchain-x86_64
+	url = https://github.com/lux-operating-system/toolchain-x86_64
+ 
