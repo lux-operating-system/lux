@@ -10,6 +10,10 @@ all:
 	@./lxfs/lxfs format lux.hdd 9
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m mbr"
 	@./lxfs/lxfs mbr lux.hdd boot-x86_64/mbr.bin
+	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m boot"
+	@./lxfs/lxfs boot lux.hdd 0
+	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m bootsec"
+	@./lxfs/lxfs bootsec lux.hdd 0 boot-x86_64/bootsec.bin
 
 clean:
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lxfs clean"
