@@ -15,6 +15,8 @@ all:
 	@./lxfs/lxfs bootsec lux.hdd 0 boot-x86_64/bootsec.bin
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m bootblk"
 	@./lxfs/lxfs bootblk lux.hdd 0 boot-x86_64/lxboot.bin
+	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m cp lxboot.conf"
+	@./lxfs/lxfs cp lux.hdd 0 lxboot.conf lxboot.conf
 
 clean:
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lxfs clean"
