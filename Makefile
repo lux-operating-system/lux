@@ -19,15 +19,18 @@ all:
 	@./lxfs/lxfs bootblk lux.hdd 0 boot-x86_64/lxboot.bin
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m cp lxboot.conf"
 	@./lxfs/lxfs cp lux.hdd 0 lxboot.conf lxboot.conf
+	@./lxfs/lxfs cp lux.hdd 0 kernel/lux lux
 
 clean:
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lxfs clean"
 	@make -C lxfs clean
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m boot-x86_64 clean"
 	@make -C boot-x86_64 clean
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m kernel clean"
+	@make -C kernel clean
 
 toolchain:
 	@cd toolchain-x86_64; ./build-toolchain.sh
 
 qemu:
-	@qemu-system-x86_64 -m 128 -drive file=lux.hdd,format=raw
+	@qemu-system-x86_64 -m 128 -drive file=lux.hdd,format=raw -monitor stdio
