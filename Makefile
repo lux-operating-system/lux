@@ -3,6 +3,8 @@ all:
 	@make -C lxfs
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m boot-x86_64"
 	@make -C boot-x86_64
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m kernel"
+	@make -C kernel
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m create"
 	@./lxfs/lxfs create lux.hdd 10
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m format"

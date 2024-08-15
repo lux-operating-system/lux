@@ -8,3 +8,6 @@
 	path = toolchain-x86_64
 	url = https://github.com/lux-operating-system/toolchain-x86_64
  
+[submodule "kernel"]
+	path = kernel
+	url = https://github.com/lux-operating-system/kernel
