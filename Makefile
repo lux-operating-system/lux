@@ -5,6 +5,12 @@ all:
 	@make -C boot-x86_64
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m kernel"
 	@make -C kernel
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lucerna"
+	@make -C lucerna
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m install lucerna"
+	@make install -C lucerna
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lumen"
+	@make -C lumen
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m create"
 	@./lxfs/lxfs create lux.hdd 10
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m format"
@@ -21,6 +27,7 @@ all:
 	@./lxfs/lxfs cp lux.hdd 0 lxboot.conf lxboot.conf
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m cp lux"
 	@./lxfs/lxfs cp lux.hdd 0 kernel/lux lux
+	@cp lumen/lumen ramdisk/
 	@echo "\x1B[0;1;35m [  TAR  ]\x1B[0m c ramdisk.tar"
 	@cd ramdisk; tar --format ustar -c * > ../ramdisk.tar; cd ..
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m cp ramdisk.tar"
@@ -33,6 +40,10 @@ clean:
 	@make -C boot-x86_64 clean
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m kernel clean"
 	@make -C kernel clean
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lucerna clean"
+	@make -C lucerna clean
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lumen clean"
+	@make -C lumen clean
 
 toolchain:
 	@cd toolchain-x86_64; ./build-toolchain.sh

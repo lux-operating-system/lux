@@ -13,3 +13,6 @@
 [submodule "lucerna"]
 	path = lucerna
 	url = https://github.com/lux-operating-system/lucerna
+[submodule "lumen"]
+	path = lumen
+	url = ./lumen
