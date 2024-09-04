@@ -32,8 +32,23 @@ jobs:
       - name: Verify toolchain is executable
         run: x86_64-lux-gcc -v
 
-      - name: Build full system
-        run: make
+      - name: Build LXFS disk image manager
+        run: make -C lxfs
+
+      - name: Build x86_64 boot loader
+        run: make -C boot-x86_64
+
+      - name: Build kernel
+        run: make -C kernel
+
+      - name: Build lucerna
+        run: make -C lucerna
+
+      - name: Install lucerna
+        run: make install -C lucerna
+
+      - name: Build lumen
+        run: make -C lumen
     
       - name: Clean up artifacts
         run: |

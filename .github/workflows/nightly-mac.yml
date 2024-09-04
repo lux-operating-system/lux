@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
+  build:
     runs-on: macos-latest
 
     steps:
@@ -15,19 +15,10 @@ jobs:
         with:
           submodules: recursive
           token: ${{ secrets.PAT_TOKEN }}
-    
-      - name: Check commit activity
-        run: echo "NEW_COMMITS=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: brew install nasm curl make
 
-  build:
-    runs-on: macos-latest
-    needs: check
-    if: ${{ env.NEW_COMMITS }}
-
-    steps:
       - name: Fetch and install toolchain
         run: |
           curl https://jewelcodes.io/lux/toolchain-macos-arm64.tar.xz -o toolchain-macos-arm64.tar.xz
@@ -39,7 +30,25 @@ jobs:
       - name: Verify toolchain is executable
         run: x86_64-lux-gcc -v
 
-      - name: Build full system
+      - name: Build LXFS disk image manager
+        run: make -C lxfs
+
+      - name: Build x86_64 boot loader
+        run: make -C boot-x86_64
+
+      - name: Build kernel
+        run: make -C kernel
+
+      - name: Build lucerna
+        run: make -C lucerna
+
+      - name: Install lucerna
+        run: make install -C lucerna
+
+      - name: Build lumen
+        run: make -C lumen
+
+      - name: Create disk image
         run: make
 
       - name: Timestamp disk image
@@ -53,5 +62,5 @@ jobs:
     
       - name: Clean up artifacts
         run: |
-          rm -rf toolchain-macos-arm64.tar.xz $HOME/work/toolchain $HOME/work/host
+          rm -rf *.hdd toolchain-macos-arm64.tar.xz $HOME/work/toolchain $HOME/work/host
           make clean
