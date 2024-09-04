@@ -1,0 +1,57 @@
+name: Nightly build (macOS)
+
+on:
+  schedule:
+    - cron: "0 3 * * *"     # run daily at 3:00 AM UTC
+
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.PAT_TOKEN }}
+    
+      - name: Check commit activity
+        run: echo "NEW_COMMITS=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: brew install nasm curl make
+
+  build:
+    runs-on: macos-latest
+    needs: check
+    if: ${{ env.NEW_COMMITS }}
+
+    steps:
+      - name: Fetch and install toolchain
+        run: |
+          curl https://jewelcodes.io/lux/toolchain-macos-arm64.tar.xz -o toolchain-macos-arm64.tar.xz
+          tar -xvJf toolchain-macos-arm64.tar.xz
+          mv toolchain $HOME/work/toolchain
+          mv host $HOME/work/host
+          echo "$HOME/work/toolchain/bin" >> $GITHUB_PATH
+
+      - name: Verify toolchain is executable
+        run: x86_64-lux-gcc -v
+
+      - name: Build full system
+        run: make
+
+      - name: Timestamp disk image
+        run: mv lux.hdd lux-nightly-$(date +"%Y-%m-%d").hdd
+
+      - name: Archive disk image
+        uses: actions/upload-artifact@v4
+        with:
+          name: disk-image
+          path: lux-nightly-$(date +"%Y-%m-%d").hdd
+    
+      - name: Clean up artifacts
+        run: |
+          rm -rf toolchain-macos-arm64.tar.xz $HOME/work/toolchain $HOME/work/host
+          make clean
