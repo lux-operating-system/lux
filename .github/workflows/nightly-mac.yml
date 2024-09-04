@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: disk-image
-          path: lux-nightly-$(date +"%Y-%m-%d").hdd
+          path: lux*.hdd
     
       - name: Clean up artifacts
         run: |
