@@ -5,7 +5,7 @@
 ## Nightly Builds
 If you prefer to build luxOS yourself, scroll down.
 
-If you prefer to use a nightly build, build images will be generated every night at 3:00 AM GMT, and builds from the last 90 days are available under the [Actions tab](https://github.com/lux-operating-system/lux/actions/runs/10707813479).
+If you prefer to use a nightly build, build images will be generated every night at 3:00 AM GMT, and builds from the last 90 days are available under the [Actions tab](https://github.com/lux-operating-system/lux/actions/workflows/nightly-mac.yml).
 
 ## Building
 ### 1. Requisites
