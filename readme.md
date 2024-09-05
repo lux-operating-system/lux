@@ -77,7 +77,7 @@ Many artifacts are generated from intermediate steps in the build process. If yo
 make clean
 ```
 
-### License
+## License
 The lux microkernel is free and open source software released under the terms of the MIT License. Unix is a registered trademark of The Open Group.
 
 #
