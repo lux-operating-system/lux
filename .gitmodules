@@ -16,3 +16,6 @@
 [submodule "lumen"]
 	path = lumen
 	url = https://github.com/lux-operating-system/lumen
+[submodule "servers"]
+	path = servers
+	url = https://github.com/lux-operating-system/servers
