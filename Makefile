@@ -9,12 +9,12 @@ all:
 	@make -C lucerna
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m install lucerna"
 	@make install -C lucerna
-	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lumen"
-	@make -C lumen
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m servers"
 	@make -C servers
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m install servers"
 	@make install -C servers
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lumen"
+	@make -C lumen
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m create"
 	@./lxfs/lxfs create lux.hdd 10
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m format"
