@@ -11,6 +11,10 @@ all:
 	@make install -C lucerna
 	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lumen"
 	@make -C lumen
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m servers"
+	@make -C servers
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m install servers"
+	@make install -C servers
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m create"
 	@./lxfs/lxfs create lux.hdd 10
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m format"
@@ -28,25 +32,28 @@ all:
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m cp lux"
 	@./lxfs/lxfs cp lux.hdd 0 kernel/lux lux
 	@cp lumen/lumen ramdisk/
+	@cp -r servers/out/* ramdisk/
 	@echo "\x1B[0;1;35m [  TAR  ]\x1B[0m c ramdisk.tar"
 	@cd ramdisk; tar --format ustar -c * > ../ramdisk.tar; cd ..
 	@echo "\x1B[0;1;35m [  LXFS ]\x1B[0m cp ramdisk.tar"
 	@./lxfs/lxfs cp lux.hdd 0 ramdisk.tar ramdisk.tar
 
 clean:
-	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lxfs clean"
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m clean lxfs"
 	@make -C lxfs clean
-	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m boot-x86_64 clean"
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m clean boot-x86_64"
 	@make -C boot-x86_64 clean
-	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m kernel clean"
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m clean kernel"
 	@make -C kernel clean
-	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lucerna clean"
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m clean lucerna"
 	@make -C lucerna clean
-	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m lumen clean"
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m clean lumen"
 	@make -C lumen clean
+	@echo "\x1B[0;1;35m [  MAKE ]\x1B[0m clean servers"
+	@make -C servers clean
 
 toolchain:
 	@cd toolchain-x86_64; ./build-toolchain.sh
 
 qemu:
-	@qemu-system-x86_64 -m 128 -drive file=lux.hdd,format=raw -monitor stdio -smp 4 -cpu Skylake-Client
+	@qemu-system-x86_64 -monitor stdio -m 512 -drive file=lux.hdd,format=raw -smp 2 -cpu IvyBridge
