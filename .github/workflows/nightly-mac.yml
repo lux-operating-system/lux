@@ -45,6 +45,12 @@ jobs:
       - name: Install lucerna
         run: make install -C lucerna
 
+      - name: Build servers
+        run: make -C servers
+
+      - name: Install servers
+        run: make install -C servers
+
       - name: Build lumen
         run: make -C lumen
 
