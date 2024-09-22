@@ -19,3 +19,6 @@
 [submodule "servers"]
 	path = servers
 	url = https://github.com/lux-operating-system/servers
+[submodule "utilities"]
+	path = utilities
+	url = ./utilities

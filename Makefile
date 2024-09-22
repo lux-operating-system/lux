@@ -15,6 +15,10 @@ all:
 	@make install -C servers
 	@echo "\x1B[0;1;35m make\x1B[0m lumen"
 	@make -C lumen
+	@echo "\x1B[0;1;35m make\x1B[0m utilities"
+	@make -C utilities
+	@echo "\x1B[0;1;35m make\x1B[0m install utilities"
+	@make install -C utilities
 	@echo "\x1B[0;1;35m lxfs\x1B[0m create"
 	@./lxfs/lxfs create lux.hdd 10
 	@echo "\x1B[0;1;35m lxfs\x1B[0m format"
@@ -33,6 +37,7 @@ all:
 	@./lxfs/lxfs cp lux.hdd 0 kernel/lux lux
 	@cp lumen/lumen ramdisk/
 	@cp -r servers/out/* ramdisk/
+	@cp -r utilities/out/* ramdisk/
 	@echo "\x1B[0;1;35m tar \x1B[0m c ramdisk.tar"
 	@cd ramdisk; tar --format ustar -c * > ../ramdisk.tar; cd ..
 	@echo "\x1B[0;1;35m lxfs\x1B[0m cp ramdisk.tar"
@@ -51,6 +56,8 @@ clean:
 	@make -C lumen clean
 	@echo "\x1B[0;1;35m make\x1B[0m clean servers"
 	@make -C servers clean
+	@echo "\x1B[0;1;35m make\x1B[0m clean utilities"
+	@make -C utilities clean
 
 toolchain:
 	@cd toolchain-x86_64; ./build-toolchain.sh
