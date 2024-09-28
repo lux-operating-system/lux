@@ -63,4 +63,6 @@ toolchain:
 	@cd toolchain-x86_64; ./build-toolchain.sh
 
 qemu:
-	@qemu-system-x86_64 -monitor stdio -m 128 -drive file=lux.hdd,format=raw -smp 4 -cpu IvyBridge
+	@qemu-system-x86_64 -monitor stdio -m 128 -smp 4 -cpu IvyBridge \
+	-drive file=lux.hdd,format=raw,if=none,id=disk \
+	-device nvme,serial=12345678,drive=disk
