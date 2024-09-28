@@ -2,6 +2,89 @@
 
 [![License: MIT](https://img.shields.io/github/license/lux-operating-system/kernel?color=red)](https://github.com/lux-operating-system/lux/blob/main/LICENSE) [![Build status](https://github.com/lux-operating-system/lux/actions/workflows/build-mac.yml/badge.svg)](https://github.com/lux-operating-system/lux/actions) [![GitHub Issues](https://img.shields.io/github/issues/lux-operating-system/lux)](https://github.com/lux-operating-system/lux/issues)
 
+## Progress Checklist
+
+This checklist provides a rough overview of the backlog for the luxOS project. It is not meant to be all-inclusive and is subject to change as more components of the system are developed and/or if the vision or design changes.
+
+- [ ] **Milestone 0: Requisite to all other milestones:**
+  - [x] Priority scheduling
+  - [x] Multiprocessing
+  - [x] Multithreaded and preemptible microkernel
+  - [x] User space
+  - [ ] C library
+  - [ ] C++ library
+  - [x] Unix sockets
+  - [x] Standard communication protocol for microkernel servers
+  - [x] Framework for drivers running in user space
+  - [x] Unix-like /dev file system
+  - [ ] Unix-like /proc file system
+  - [ ] Anonymous pipes
+  - [ ] Named pipes
+  - [ ] Wildcards
+  - [x] At **least** one read-write storage device driver:
+      - [x] NVMe SSDs
+      - [ ] AHCI (SATA SSDs and HDDs)
+      - [ ] IDE (ATA HDDs)
+  - [ ] At **least** one read-write file system driver with enforced Unix permissions:
+      - [ ] lxfs
+      - [ ] ext2
+      - [ ] ext3/4
+      - [ ] FAT
+  - [x] Keyboard input
+  - [x] Unix-style pseudo-terminal driver
+  - [ ] Terminal emulator with support for ANSI control codes
+  - [ ] Port ncurses
+  - [ ] Port **one** shell:
+    - [ ] zsh (preferred)
+    - [ ] bash
+
+- [ ] **Milestone 1: Independence and self-hosting:**
+
+	- [ ] Port binutils
+	- [ ] Port GCC
+	- [ ] Port NASM
+	- [ ] Port make
+	- [ ] Port a simple text editor (e.g. vim or nano)
+	- [ ] Edit and recompile the OS running under itself
+
+- [ ] **Milestone 2: Networking:**
+
+	- [ ] At **least** one ethernet device driver:
+      - [ ] NE2000 (Bochs and QEMU)
+      - [ ] Realtek RTL8139 (QEMU)
+      - [ ] Realtek RTL8111/RTL8169 (real hardware)
+      - [ ] AMD PC-NET (VirtualBox)
+      - [ ] Intel i8254x (QEMU and VirtualBox)
+	- [ ] TCP/IP stack with support for IPv4 and IPv6
+	    - [ ] DHCP client implementation
+	    - [ ] DNS lookup implementation
+	- [ ] Port OpenSSL for secure TCP connections
+	- [ ] Port wget and/or curl
+	- [ ] Port git
+	- [ ] Port ssh
+	- [ ] Package and repository manager
+
+- [ ] **Milestone 3: USB:**
+
+	- [ ] Device driver for xHCI (USB 3.x)
+	- [ ] Device driver for USB hubs
+	- [ ] Drivers for USB HIDs (keyboards and mice)
+	- [ ] Driver for USB mass storage devices
+	- [ ] Driver for USB ethernet controllers
+
+- [ ] **Milestone 4: Iris (graphical user interface):**
+
+	- [ ] Display manager
+	- [ ] Compositor
+	- [ ] Windowing system
+	- [ ] Graphical terminal emulator
+	- [ ] Graphical file manager
+	- [ ] Frontends for common command-line utilities
+
+- [ ] **Milestone 5: Port from x86_64 to ARM64:**
+
+	- [ ] **TODO:** Specifics yet to be decided
+
 ## Nightly Builds
 If you prefer to build luxOS yourself, scroll down.
 
