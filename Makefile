@@ -42,6 +42,18 @@ all:
 	@cd ramdisk; tar --format ustar -c * > ../ramdisk.tar; cd ..
 	@echo "\x1B[0;1;35m lxfs\x1B[0m cp ramdisk.tar"
 	@./lxfs/lxfs cp lux.hdd 0 ramdisk.tar ramdisk.tar
+	@./lxfs/lxfs mkdir lux.hdd 0 /bin
+	@./lxfs/lxfs mkdir lux.hdd 0 /dev
+	@./lxfs/lxfs mkdir lux.hdd 0 /proc
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/nterm /bin/nterm
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/hello /bin/hello
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/lush /bin/lush
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/echo /bin/echo
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/unbash /bin/unbash
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/pwd /bin/pwd
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/ls /bin/ls
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/cat /bin/cat
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/luxfetch /bin/luxfetch
 
 clean:
 	@echo "\x1B[0;1;35m make\x1B[0m clean lxfs"
@@ -63,6 +75,6 @@ toolchain:
 	@cd toolchain-x86_64; ./build-toolchain.sh
 
 qemu:
-	@qemu-system-x86_64 -monitor stdio -m 128 -smp 4 -cpu IvyBridge \
+	@qemu-system-x86_64 -monitor stdio -m 4096 -smp 4 -cpu Skylake-Client \
 	-drive file=lux.hdd,format=raw,if=none,id=disk \
 	-device nvme,serial=12345678,drive=disk
