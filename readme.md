@@ -10,6 +10,8 @@
 
 **luxOS** is a planned prototype Unix-like operating system that will be built on the [lux microkernel](https://github.com/lux-operating-system/kernel). This repository contains the build system for a disk image containing luxOS that can be booted on a virtual machine or on real hardware, as well as the overall project roadmap.
 
+![Screenshot of luxOS running on QEMU](https://jewelcodes.io/lux-10-06-24.png)
+
 # Nightly Builds
 If you prefer to build luxOS yourself, scroll down.
 
@@ -166,6 +168,13 @@ This checklist provides a rough overview of the backlog for the luxOS project. I
 - [ ] **Milestone 5: Port from x86_64 to ARM64:**
 
 	- [ ] **TODO:** Specifics yet to be decided
+
+# Contributing
+
+The lux microkernel and the luxOS Project are both personal educational/research projects and are not planned to be community-developed. However, if you like what you're seeing and/or you learned something, monetary contributions would be greatly appreciated and provide a direct incentive to allocate more time to the project. You can support my work on [Patreon](https://patreon.com/luxOS) if you're interested.
+
+# Contact
+Join the project's [Discord server](https://discord.gg/GEeekQEgaB) if you just wanna say hi or talk about OS development in general.
 
 # License
 The lux microkernel is free and open source software released under the terms of the MIT License. Unix is a registered trademark of The Open Group.
