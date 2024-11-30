@@ -22,3 +22,6 @@
 [submodule "utilities"]
 	path = utilities
 	url = https://github.com/lux-operating-system/utilities
+[submodule "ports"]
+	path = ports
+	url = https://github.com/lux-operating-system/ports
