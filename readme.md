@@ -10,7 +10,7 @@
 
 **luxOS** is a planned prototype Unix-like operating system that will be built on the [lux microkernel](https://github.com/lux-operating-system/kernel). This repository contains the build system for a disk image containing luxOS that can be booted on a virtual machine or on real hardware, as well as the overall project roadmap.
 
-![Screenshot of luxOS running on QEMU](https://jewelcodes.io/lux-10-06-24.png)
+![Screenshot of luxOS running on QEMU](https://jewelcodes.io/lux-01-03-25.png)
 
 # Nightly Builds
 If you prefer to build luxOS yourself, scroll down.
@@ -96,13 +96,14 @@ This checklist provides a rough overview of the backlog for the luxOS project. I
   - [x] Multiprocessing
   - [x] Multithreaded and preemptible microkernel
   - [x] User space
-  - [ ] C library
+  - [x] C library (partial)
   - [ ] C++ library
-  - [x] Unix sockets
+  - [x] Unix domain sockets
+  - [x] POSIX signals
   - [x] Standard communication protocol for microkernel servers
   - [x] Framework for drivers running in user space
   - [x] Unix-like `/dev` file system
-  - [ ] Unix-like `/proc` file system
+  - [x] Unix-like `/proc` file system (partial)
   - [ ] Anonymous pipes
   - [ ] Named pipes
   - [ ] Wildcards
@@ -110,13 +111,13 @@ This checklist provides a rough overview of the backlog for the luxOS project. I
       - [x] NVMe SSDs
       - [ ] AHCI (SATA SSDs and HDDs)
       - [ ] IDE (ATA HDDs)
-  - [ ] At **least** one read-write file system driver with enforced Unix permissions:
-      - [ ] lxfs
+  - [x] At **least** one read-write file system driver with enforced Unix permissions:
+      - [x] lxfs
       - [ ] ext2
       - [ ] ext3/4
   - [x] Keyboard input
   - [x] Unix-style pseudo-terminal driver
-  - [ ] Terminal emulator with support for ANSI control codes
+  - [x] Terminal emulator with support for ANSI control codes
   - [ ] Port ncurses
   - [ ] Port **one** shell:
     - [ ] zsh (preferred)
@@ -128,7 +129,7 @@ This checklist provides a rough overview of the backlog for the luxOS project. I
 	- [ ] Port GCC
 	- [ ] Port NASM
 	- [ ] Port make
-	- [ ] Port a simple text editor (e.g. vim or nano)
+	- [x] Port a simple text editor
 	- [ ] Edit and recompile the OS running under itself
 
 - [ ] **Milestone 2: Networking:**
