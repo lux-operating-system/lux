@@ -10,7 +10,7 @@
 
 **luxOS** is a planned prototype Unix-like operating system that will be built on the [lux microkernel](https://github.com/lux-operating-system/kernel). This repository contains the build system for a disk image containing luxOS that can be booted on a virtual machine or on real hardware, as well as the overall project roadmap.
 
-![Screenshot of luxOS running on QEMU](https://jewelcodes.io/lux-01-03-25.png)
+![Screenshot of luxOS running on QEMU](https://jewelcodes.io/lux-01-14-24.png)
 
 # Nightly Builds
 If you prefer to build luxOS yourself, scroll down.
