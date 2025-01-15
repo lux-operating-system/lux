@@ -49,11 +49,16 @@ all:
 	@./lxfs/lxfs cp lux.hdd 0 ramdisk/hello /bin/hello
 	@./lxfs/lxfs cp lux.hdd 0 ramdisk/lush /bin/lush
 	@./lxfs/lxfs cp lux.hdd 0 ramdisk/echo /bin/echo
-	@./lxfs/lxfs cp lux.hdd 0 ramdisk/unbash /bin/unbash
 	@./lxfs/lxfs cp lux.hdd 0 ramdisk/pwd /bin/pwd
 	@./lxfs/lxfs cp lux.hdd 0 ramdisk/ls /bin/ls
 	@./lxfs/lxfs cp lux.hdd 0 ramdisk/cat /bin/cat
 	@./lxfs/lxfs cp lux.hdd 0 ramdisk/luxfetch /bin/luxfetch
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/head /bin/head
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/reset /bin/reset
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/chmod /bin/chmod
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/touch /bin/touch
+	@./lxfs/lxfs cp lux.hdd 0 ramdisk/rm /bin/rm
+	@./lxfs/lxfs mkdir lux.hdd 0 /test
 
 clean:
 	@echo "\x1B[0;1;35m make\x1B[0m clean lxfs"
@@ -70,6 +75,8 @@ clean:
 	@make -C servers clean
 	@echo "\x1B[0;1;35m make\x1B[0m clean utilities"
 	@make -C utilities clean
+	@echo "\x1B[0;1;35m make\x1B[0m clean ports"
+	@make -C ports clean
 
 toolchain:
 	@cd toolchain-x86_64; ./build-toolchain.sh
