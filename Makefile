@@ -75,8 +75,6 @@ clean:
 	@make -C servers clean
 	@echo "\x1B[0;1;35m make\x1B[0m clean utilities"
 	@make -C utilities clean
-	@echo "\x1B[0;1;35m make\x1B[0m clean ports"
-	@make -C ports clean
 
 toolchain:
 	@cd toolchain-x86_64; ./build-toolchain.sh
