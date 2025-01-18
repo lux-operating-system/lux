@@ -110,7 +110,7 @@ This checklist provides a rough overview of the backlog for the luxOS project. I
   - [x] At **least** one read-write storage device driver:
       - [x] NVMe SSDs
       - [ ] AHCI (SATA SSDs and HDDs)
-      - [ ] IDE (ATA HDDs)
+      - [x] IDE (ATA HDDs)
   - [x] At **least** one read-write file system driver with enforced Unix permissions:
       - [x] lxfs
       - [ ] ext2
